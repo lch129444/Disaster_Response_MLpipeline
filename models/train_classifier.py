@@ -157,6 +157,13 @@ def build_model():
         ('classifier', MultiOutputClassifier(RandomForestClassifier()))
     ])
 
+    parameters_grid = {
+    'features__text_pipeline__count_vectorizer__ngram_range': ((1, 1), (1, 2)),
+    'features__text_pipeline__count_vectorizer__max_df': (0.5, 0.75, 1.0),
+              'classifier__estimator__n_estimators': [50, 100, 200]}
+
+    pipeline = GridSearchCV(pipeline, param_grid=parameters_grid, scoring='f1_micro', n_jobs=-1)
+    
     return pipeline
 
 
