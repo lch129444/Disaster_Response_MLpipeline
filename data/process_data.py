@@ -62,7 +62,7 @@ def clean_data(df):
         categories[column] = categories[column].astype(int)
 
     df = df.drop(['categories'], axis=1, inplace=True)
-    df = pd.concat([df,categories], join='inner', axis=1)
+    df = pd.concat([df,categories], axis=1)
     df.drop_duplicates(inplace=True)
 
     return df
