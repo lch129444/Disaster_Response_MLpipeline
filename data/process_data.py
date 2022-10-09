@@ -61,7 +61,7 @@ def clean_data(df):
         categories[column] = categories[column].astype(str).str[-1:]
         categories[column] = categories[column].astype(int)
 
-    df = df.drop(['categories'], axis=1, inplace=True)
+    df.drop(['categories'], axis=1, inplace=True)
     df = pd.concat([df,categories], axis=1)
     df.drop_duplicates(inplace=True)
 
